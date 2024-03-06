@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:meta/meta.dart';
@@ -36,6 +35,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     }
 
     //if the user is signed out
-    emit(SplashInternetConnectionCheckSuccessUserSignedInState());
+    emit(SplashInternetConnectionCheckSuccessUserSignedOutState());
   }
 }

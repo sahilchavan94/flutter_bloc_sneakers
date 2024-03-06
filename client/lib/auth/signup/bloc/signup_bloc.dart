@@ -16,22 +16,24 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       emit(SignupNavigateToIntroState());
     });
 
+
+
+
     //function to handle the validation event
     on<SignupFormValidationEvent>((event, emit) {
       if (event.formkey.currentState!.validate()) {
-        //if the validation is succedded then emit the success state
         emit(SignupFormValidationSuccessState(userModel: event.userModel));
         return;
       }
-      //if the validation is failed emit the validation failed event
       emit(SignupFormValidationFailedState());
     });
 
+
+
+
     //function to handle the finish button clicked event
     on<SignupFinishButtonClickedEvent>((event, emit) async {
-      //emit the loading state when the process begins
       emit(SignupLoadingState());
-      //call the signup method
       try {
         final response = await SignupRepo.createUser(event.userModel);
         if (response["status"] == "success") {
