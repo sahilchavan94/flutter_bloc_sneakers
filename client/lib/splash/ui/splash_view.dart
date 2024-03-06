@@ -11,14 +11,12 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
-  //create a new splash bloc instance 
+  //create a new splash bloc instance
   //the concept of dependency injection can be used here
   final SplashBloc _splashBloc = SplashBloc();
 
   @override
   void initState() {
-    
     //on page load, throw the event to initialize the internet connection stablity
     _splashBloc.add(InternetConnectionCheckEvent());
     super.initState();
@@ -27,32 +25,40 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SplashBloc, SplashState>(
-
-      
       bloc: _splashBloc,
 
-
       listener: (context, state) {
-
         //if the state is failed state then show the snackbar regarding the connection issue
-        if (state is InternetConnectionCheckFailedState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        if (state is SplashInternetConnectionCheckFailedState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
               content: Text(
                 "Check your internet connection",
                 style: MyTheme.themeData.textTheme.displaySmall,
               ),
               backgroundColor: Colors.grey[200],
-              padding: const EdgeInsets.only(top: 30, left: 30)));
-          Navigator.pushReplacementNamed(context, '/intro');
-
+              padding: const EdgeInsets.only(
+                top: 30,
+                left: 30,
+              ),
+            ),
+          );
         }
 
-        //if it is success, then navigate to the home page
-        if (state is InternetConnectionCheckSuccessState) {
-          Navigator.pushReplacementNamed(context, '/intro');
+        //if it is success, then navigate to the intro page when user is signed out
+        if (state is SplashInternetConnectionCheckSuccessUserSignedOutState) {
+          Future.delayed(const Duration(seconds: 1), () {
+            Navigator.pushReplacementNamed(context, "/intro");
+          });
+        }
+
+        //if it is success, then navigate to the intro page when user is signed in
+        if (state is SplashInternetConnectionCheckSuccessUserSignedInState) {
+          Future.delayed(const Duration(seconds: 1), () {
+            Navigator.pushReplacementNamed(context, "/home");
+          });
         }
       },
-
 
       //we are not building anything here, so there is only one single scaffold with a circular progress indicator
       builder: (context, state) {
@@ -65,6 +71,9 @@ class _SplashViewState extends State<SplashView> {
                 Text(
                   "FlutterSneakers",
                   style: MyTheme.themeData.textTheme.displayLarge,
+                ),
+                const SizedBox(
+                  height: 6,
                 ),
                 Text(
                   "True foot comfort with a solid build",

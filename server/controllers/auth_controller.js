@@ -7,6 +7,9 @@ dotenv.config();
 
 //method to handle the signup event
 const handleSignup = async (req, res) => {
+
+  console.log(req.body);
+
   //check whether the data is validated properly or not
   const validationErrors = validationResult(req);
 

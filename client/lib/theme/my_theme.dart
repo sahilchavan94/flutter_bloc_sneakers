@@ -1,26 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData themeData = ThemeData(
-      textTheme: TextTheme(
-          displayLarge: GoogleFonts.roboto(
-              fontSize: 22.5,
-              letterSpacing: -.05,
-              height: 1.45,
-              fontWeight: FontWeight.w400), //large
+    textTheme: const TextTheme(
 
-          displaySmall: GoogleFonts.roboto(
-              fontSize: 14, fontWeight: FontWeight.w300, height: .4), //small
+      //all the required text themes are defined
+      displayLarge: TextStyle(
+        color: Colors.black87,
+        fontSize: 22.5,
+        letterSpacing: -.05,
+        height: 1,
+        fontWeight: FontWeight.w400,
+      ), // large
 
-          headlineLarge: GoogleFonts.roboto(
-            fontSize: 40,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            letterSpacing: -1.8,
-            height: 1,
-          ), //small headline
+      displayMedium: TextStyle(
+        fontSize: 15.5,
+        height: 1.32,
+        fontWeight: FontWeight.w400,
+      ), 
+      //medium
+      bodyMedium: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w300,
+        height: 1.2,
+      ), //medium
 
-          bodySmall: GoogleFonts.roboto(
-              fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white)));
+      displaySmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w300,
+        height: .4
+      ), //small
+
+      headlineLarge: TextStyle(
+        fontSize: 40,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+        letterSpacing: -1.8,
+        height: 1,
+      ), //small headline
+
+      bodySmall: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
+      ),
+    ),
+  );
 }

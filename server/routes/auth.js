@@ -12,12 +12,6 @@ router.post(
     check("mobile").isMobilePhone().withMessage('Invalid mobile number'),
     check("email").isEmail().withMessage('Invalid email'),
     check("password").trim().isLength({ min: 6, max: 15 }).withMessage('Invalid password'),
-    check("country").isString().withMessage('Invalid country'),
-    check("state").isString().withMessage('Invalid state'),
-    check("city").isString().withMessage('Invalid city'),
-    check("pincode").isNumeric().isLength({ min: 4, max: 6 }).withMessage('Invalid pincode'),
-    check("landmark").isString().withMessage('Invalid landmark'),
-    check("address").isString().withMessage('Invalid address'),
   ],
   handleSignup
 );
