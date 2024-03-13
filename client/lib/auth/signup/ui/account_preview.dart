@@ -1,8 +1,8 @@
 import 'package:client/auth/signup/bloc/signup_bloc.dart';
 import 'package:client/theme/my_theme.dart';
-import 'package:client/widgets/button_widget.dart';
-import 'package:client/widgets/loading_widget.dart';
-import 'package:client/widgets/userdataitem_widget.dart';
+import 'package:client/global_widgets/button_widget.dart';
+import 'package:client/global_widgets/loading_widget.dart';
+import 'package:client/global_widgets/userdataitem_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +26,6 @@ class _AccountPreviewState extends State<AccountPreview> {
       body: BlocConsumer<SignupBloc, SignupState>(
         //listener to perform actions
         listener: (context, state) {
-
           //if the signup process is successfully completed
           if (state is SignupSuccessState) {
             Navigator.pushReplacementNamed(
@@ -50,8 +49,7 @@ class _AccountPreviewState extends State<AccountPreview> {
             );
           }
 
-
-          //if the signup process fails 
+          //if the signup process fails
           if (state is SignupFailureState) {
             Navigator.pushReplacementNamed(
               context,
@@ -73,10 +71,7 @@ class _AccountPreviewState extends State<AccountPreview> {
               ),
             );
           }
-
         },
-
-
 
         //builder to build the UI
         builder: (context, state) {
@@ -107,7 +102,9 @@ class _AccountPreviewState extends State<AccountPreview> {
                         style: MyTheme.themeData.textTheme.displayLarge,
                       ),
 
-                      const SizedBox(height: 6,),
+                      const SizedBox(
+                        height: 6,
+                      ),
                       Text(
                         "Check whether you are good to go or not",
                         style: MyTheme.themeData.textTheme.displaySmall,

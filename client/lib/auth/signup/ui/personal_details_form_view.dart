@@ -2,8 +2,8 @@ import 'package:client/auth/signup/bloc/signup_bloc.dart';
 import 'package:client/auth/signup/models/user_model.dart';
 import 'package:client/auth/validators/validators.dart';
 import 'package:client/theme/my_theme.dart';
-import 'package:client/widgets/button_widget.dart';
-import 'package:client/widgets/textfield_widget.dart';
+import 'package:client/global_widgets/button_widget.dart';
+import 'package:client/global_widgets/textfield_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,19 +29,19 @@ class PersonalDetailsFormView extends StatelessWidget {
         if (state is SignupFormValidationFailedState) {
           //showing the snackbar if the validation fails
           //show a snackbar with a relevant message
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  "Check your credentials",
-                  style: MyTheme.themeData.textTheme.displaySmall,
-                ),
-                backgroundColor: Colors.grey[200],
-                padding: const EdgeInsets.only(
-                  top: 30,
-                  left: 30,
-                ),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                "Check your credentials",
+                style: MyTheme.themeData.textTheme.displaySmall,
               ),
-            );
+              backgroundColor: Colors.grey[200],
+              padding: const EdgeInsets.only(
+                top: 30,
+                left: 30,
+              ),
+            ),
+          );
         }
         //navigate to the next page if the validation is succeeded
         if (state is SignupFormValidationSuccessState) {

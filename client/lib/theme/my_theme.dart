@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static ThemeData themeData = ThemeData(
     textTheme: const TextTheme(
-
       //all the required text themes are defined
       displayLarge: TextStyle(
         color: Colors.black87,
@@ -14,10 +13,10 @@ class MyTheme {
       ), // large
 
       displayMedium: TextStyle(
-        fontSize: 15.5,
-        height: 1.32,
-        fontWeight: FontWeight.w400,
-      ), 
+          fontSize: 14.5,
+          height: 1.32,
+          fontWeight: FontWeight.w400,
+          color: Colors.white),
       //medium
       bodyMedium: TextStyle(
         fontSize: 13,
@@ -28,7 +27,7 @@ class MyTheme {
       displaySmall: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w300,
-        height: .4
+        height: .4,
       ), //small
 
       headlineLarge: TextStyle(
@@ -37,7 +36,13 @@ class MyTheme {
         color: Colors.white,
         letterSpacing: -1.8,
         height: 1,
-      ), //small headline
+      ),
+
+      headlineMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w600,
+        height: 1,
+      ),
 
       bodySmall: TextStyle(
         fontSize: 16,

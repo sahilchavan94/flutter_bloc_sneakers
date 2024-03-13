@@ -1,6 +1,6 @@
 import 'package:client/auth/signup/bloc/signup_bloc.dart';
 import 'package:client/theme/my_theme.dart';
-import 'package:client/widgets/button_widget.dart';
+import 'package:client/global_widgets/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -12,11 +12,10 @@ class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignupBloc, SignupState>(
-
       //this is the listener there is no builder here as we are only going to navigate from one page to another
       listener: (context, state) {
         //if the state is this, navigate to the signup
-        if(state is SignupNavigateToIntroState){
+        if (state is SignupNavigateToIntroState) {
           Navigator.pushReplacementNamed(context, "/signup");
         }
       },
@@ -89,7 +88,9 @@ class IntroView extends StatelessWidget {
                 //button widget for processing further
                 ButtonWidget(
                   onPressed: () {
-                    context.read<SignupBloc>().add(SignupNavigateToIntroEvent());
+                    context
+                        .read<SignupBloc>()
+                        .add(SignupNavigateToIntroEvent());
                   },
                   text: "Get started",
                   icon: const Icon(
